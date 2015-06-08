@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Now, this is a story all about how my life got flipped-turned upside down...
 // @author       The Fresh Prince of Jira
-// @match        https://centare.atlassian.net/secure/RapidBoard.jspa*
+// @match        https://*.atlassian.net/secure/RapidBoard.jspa*
 // @grant        none
 // ==/UserScript==
 
