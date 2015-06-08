@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FreshScript (Jira Tweaks)
 // @namespace    https://youtu.be/hBe0VCso0qs
-// @version      0.6
+// @version      0.7
 // @description  Now, this is a story all about how my life got flipped-turned upside down...
 // @author       The Fresh Prince of Jira
 // @match        https://*.atlassian.net/secure/RapidBoard.jspa*
@@ -36,17 +36,47 @@ jQuery(function($) {
     
     document.head.appendChild(style);
 
+    // Storage
+
+    var storage = {
+        get: function(key) {
+            return JSON.parse(window.localStorage.getItem("freshscript." + key));
+        },
+        set: function(key, value) {
+            window.localStorage.setItem("freshscript." + key, JSON.stringify(value));
+        }
+    };
+
     // Column width toggle
+
+    function setColumnMode(wide) {
+        if (wide) {
+            $("#ghx-pool").addClass("wide");
+        } else {
+            $("#ghx-pool").removeClass("wide");
+        }
+        $("#ghx-column-header-group").width($(".ghx-columns").width());
+        storage.set("wideColumns", wide);
+    }
 
     $("<button></button>")
         .addClass("aui-button")
         .text("Toggle Column Width")
         .css("margin-left", 10)
         .click(function() {
-            $("#ghx-pool").toggleClass("wide");
-            $("#ghx-column-header-group").width($(".ghx-columns").width());
+            setColumnMode(!$("#ghx-pool").hasClass("wide"));
         })
         .prependTo("#ghx-modes-tools");
+
+    if (storage.get("wideColumns")) {
+        (function checkForColumns() {
+            if ($("#ghx-pool").length) {
+                setColumnMode(true);
+            } else {
+                setTimeout(checkForColumns, 100);
+            }
+        })();
+    }
 
     // Click & drag scroll
 
