@@ -17,6 +17,7 @@ jQuery(function($) {
 
     style.innerText =
         ".ghx-extra-fields, .ghx-type, .ghx-days { display: none; }" +
+        "#ghx-pool { cursor: default; }" +
         "#ghx-pool .ghx-issue .ghx-issue-content { padding: 5px 5px 5px 13px; }" +
         "#ghx-pool.ghx-band-1 .ghx-issue .ghx-issue-fields { padding-right: 25px; }" +
         "#ghx-pool .ghx-issue .ghx-flags { top: 7px; right: 7px; left: auto; }" +
