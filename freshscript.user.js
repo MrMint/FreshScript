@@ -43,17 +43,23 @@ jQuery(function($) {
         });
 
         var initialScrollPosition = $('#ghx-pool').scrollLeft();
-        mc.on("panleft panright panend", function(ev) {
+        var panning = false;
+        mc.on("panleft panright panend panstart", function(ev) {
             switch (ev.type) {
+                case "panstart":
+                    if ($(ev.target).closest('.ghx-issue').length == 0) {
+                        panning = true;
+                    }
+                    break;
                 case "panend":
+                    panning = false;
                     initialScrollPosition = $('#ghx-pool').scrollLeft();
                     break;
                 case "panleft":
                 case "panright":
-                    // This check is potentially expensive
-                    // Todo figure out what is up with panstart, as ideally we check for this once there
-                    if ($(ev.target).closest('.ghx-issue').length == 0) {
-                        $('#ghx-pool').scrollLeft(initialScrollPosition - (ev.deltaX / 1));
+                    if(panning)
+                    {
+                        $('#ghx-pool').scrollLeft(initialScrollPosition - ev.deltaX);
                     }
                     break;
                 default:
