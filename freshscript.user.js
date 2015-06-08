@@ -19,7 +19,7 @@ jQuery(function($) {
         ".ghx-band-2 .ghx-issue .ghx-issue-content { padding: 5px 5px 5px 13px; }" +
         ".ghx-band-2 .ghx-issue .ghx-flags { top: 7px; right: 7px; left: initial; }" +
         ".ghx-band-2 .ghx-issue .ghx-avatar:not(:empty) ~ .ghx-flags { top: 32px; }" +
-		".ghx-band-1 .ghx-issue .ghx-avatar {top 7px;}" +
+		".ghx-band-1 .ghx-issue .ghx-avatar {top: 7px;}" +
         ".ghx-priority[title='Major'] { display: none; }" +
         "#ghx-pool.wide { padding-top: 0 !important; }" +
         "#ghx-pool.wide .ghx-columns { width: 150%; }" +
