@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FreshScript (Jira Tweaks)
 // @namespace    https://youtu.be/hBe0VCso0qs
-// @version      0.2
+// @version      0.3
 // @description  Now, this is a story all about how my life got flipped-turned upside down...
 // @author       The Fresh Prince of Jira
 // @match        https://*.atlassian.net/secure/RapidBoard.jspa*
