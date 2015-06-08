@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FreshScript (Jira Tweaks)
 // @namespace    https://youtu.be/hBe0VCso0qs
-// @version      0.5
+// @version      0.6
 // @description  Now, this is a story all about how my life got flipped-turned upside down...
 // @author       The Fresh Prince of Jira
 // @match        https://*.atlassian.net/secure/RapidBoard.jspa*
@@ -91,6 +91,14 @@ jQuery(function($) {
                     break;
             }
         });
+    });
+
+    // Faster project switching
+
+    $("#ghx-controls-work").on("click", "#js-work-quickfilters a.js-quickfilter-button.ghx-active", function(e, ignore) {
+        if (!e.ctrlKey && !ignore) {
+            $("#js-work-quickfilters a.js-quickfilter-button.ghx-active").not(this).trigger("click", [ true ]);
+        }
     });
 
 });
