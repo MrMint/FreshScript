@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FreshScript (Jira Tweaks)
 // @namespace    https://youtu.be/hBe0VCso0qs
-// @version      0.3
+// @version      0.4
 // @description  Now, this is a story all about how my life got flipped-turned upside down...
 // @author       The Fresh Prince of Jira
 // @match        https://*.atlassian.net/secure/RapidBoard.jspa*
@@ -9,6 +9,7 @@
 // @require      http://hammerjs.github.io/dist/hammer.min.js
 // ==/UserScript==
 jQuery(function($) {
+    
     // Styles
     var style = document.createElement("style");
     style.innerText = ".ghx-extra-fields, .ghx-type, .ghx-days { display: none; }" + 
@@ -23,11 +24,16 @@ jQuery(function($) {
         "#ghx-column-headers .ghx-column { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }" + 
         "#ghx-column-headers .ghx-column h2 { display: inline; }";
     document.head.appendChild(style);
+
     // Column width toggle
-    $("<button></button>").addClass("aui-button").text("Toggle Column Width").css("margin-left", 10).click(function() {
-        $("#ghx-pool").toggleClass("wide");
-        $("#ghx-column-header-group").width($(".ghx-columns").width());
-    }).prependTo("#ghx-modes-tools");
+    $("<button></button>")
+        .addClass("aui-button")
+        .text("Toggle Column Width").css("margin-left", 10)
+        .click(function() {
+            $("#ghx-pool").toggleClass("wide");
+            $("#ghx-column-header-group").width($(".ghx-columns").width());
+        }).prependTo("#ghx-modes-tools");
+
     $.getScript("https://hammerjs.github.io/dist/hammer.min.js", function() {
         // Hammer time
         var myElement = document.getElementById('ghx-pool');
@@ -35,6 +41,7 @@ jQuery(function($) {
         mc.get('pan').set({
             direction: Hammer.DIRECTION_ALL
         });
+
         var initialScrollPosition = $('#ghx-pool').scrollLeft();
         mc.on("panleft panright panend", function(ev) {
             switch (ev.type) {
