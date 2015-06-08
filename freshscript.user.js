@@ -58,9 +58,10 @@ jQuery(function($) {
             direction: Hammer.DIRECTION_ALL
         });
 
-        var initialScrollPosition = $('#ghx-pool').scrollLeft();
+        var initialHorizScrollPosition = $('#ghx-pool').scrollLeft();
+        var initialVertScrollPosition = $('#ghx-pool').scrollTop();
         var panning = false;
-        mc.on("panleft panright panend panstart", function(ev) {
+        mc.on("panleft panright panend panstart panup pandown", function(ev) {
             switch (ev.type) {
                 case "panstart":
                     if ($(ev.target).closest('.ghx-issue').length == 0) {
@@ -69,13 +70,21 @@ jQuery(function($) {
                     break;
                 case "panend":
                     panning = false;
-                    initialScrollPosition = $('#ghx-pool').scrollLeft();
+                    initialHorizScrollPosition = $('#ghx-pool').scrollLeft();
+                    initialVertScrollPosition = $('#ghx-pool').scrollTop();
                     break;
                 case "panleft":
                 case "panright":
                     if(panning)
                     {
-                        $('#ghx-pool').scrollLeft(initialScrollPosition - ev.deltaX);
+                        $('#ghx-pool').scrollLeft(initialHorizScrollPosition - ev.deltaX);
+                    }
+                    break;
+                case "panup":
+                case "pandown":
+                    if(panning)
+                    {
+                        $('#ghx-pool').scrollTop(initialVertScrollPosition - ev.deltaY);
                     }
                     break;
                 default:
