@@ -50,11 +50,7 @@ jQuery(function($) {
     // Column width toggle
 
     function setColumnMode(wide) {
-        if (wide) {
-            $("#ghx-pool").addClass("wide");
-        } else {
-            $("#ghx-pool").removeClass("wide");
-        }
+        $("#ghx-pool").toggleClass("wide", wide);
         $("#ghx-column-header-group").width($(".ghx-columns").width());
         storage.set("wideColumns", wide);
     }
