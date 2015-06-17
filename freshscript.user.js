@@ -9,7 +9,12 @@
 // @require      http://hammerjs.github.io/dist/hammer.min.js
 // ==/UserScript==
 
-jQuery(function($) {
+(function(cb) {
+	jQuery(function check() {
+        if (jQuery("#ghx-pool").length) cb(jQuery);
+        else setTimeout(check, 100);
+    });
+})(function($) {
     
     // Styles
 
@@ -65,13 +70,7 @@ jQuery(function($) {
         .prependTo("#ghx-modes-tools");
 
     if (storage.get("wideColumns")) {
-        (function checkForColumns() {
-            if ($("#ghx-pool").length) {
-                setColumnMode(true);
-            } else {
-                setTimeout(checkForColumns, 100);
-            }
-        })();
+        setColumnMode(true);
     }
 
     // Click & drag scroll
