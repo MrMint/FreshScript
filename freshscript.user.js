@@ -34,7 +34,7 @@
         "#ghx-pool.ghx-band-1 .ghx-issue .ghx-avatar:not(:empty) ~ .ghx-flags { top: 29px; }" +
         "#ghx-pool .ghx-issue .ghx-priority[title='Major'] { display: none; }" +
         "#ghx-pool.wide { padding-top: 0 !important; }" +
-        "#ghx-pool.wide .ghx-columns { width: 150%; }" +
+        "#ghx-pool.wide .ghx-columns, #ghx-pool.wide .ghx-zone-overlay-table { width: 150%; }" +
         "#ghx-pool.wide .ghx-column-header-group { position: static !important; }" +
         "#ghx-column-headers .ghx-column { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }" +
         "#ghx-column-headers .ghx-column h2 { display: inline; }";
