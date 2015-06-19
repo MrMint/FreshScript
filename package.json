@@ -1,0 +1,20 @@
+{
+  "name": "FreshScript",
+  "version": "1.0.2",
+  "description": "Now, this is a story all about how my life got flipped-turned upside down...",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrMint/FreshScript.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
+    "node-libs-browser": "^0.5.2",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.9.11"
+  }
+}
