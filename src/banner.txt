@@ -6,5 +6,4 @@
 // @author       The Fresh Prince of Jira
 // @match        https://*.atlassian.net/secure/RapidBoard.jspa*
 // @grant        none
-// @require      http://hammerjs.github.io/dist/hammer.min.js
 // ==/UserScript==

@@ -1,8 +1,8 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
-var lastX;
-var lastY;
-var down = false;
+let lastX;
+let lastY;
+let down = false;
 
 $('#ghx-pool').on('mousedown', function(e) {
 	if (!$(e.target).closest('.ghx-issue').length) {
@@ -17,7 +17,7 @@ $(window).on('mouseup', function() {
 	down = false;
 }).on('mousemove', function(e) {
 	if (down) {
-		var el = $('#ghx-pool')[0];
+		let el = $('#ghx-pool')[0];
 		el.scrollLeft -= e.pageX - lastX;
 		el.scrollTop -= e.pageY - lastY;
 		lastX = e.pageX;
