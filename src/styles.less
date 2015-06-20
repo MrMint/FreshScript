@@ -1,57 +1,79 @@
-.ghx-extra-fields, .ghx-type, .ghx-days {
-	display: none;
-}
 #ghx-pool {
 	cursor: default;
-}
-#ghx-pool .ghx-issue .ghx-issue-content {
-	padding: 5px 5px 5px 13px;
-}
-#ghx-pool.ghx-band-1 .ghx-issue .ghx-issue-fields {
-	padding-right: 25px;
-}
-#ghx-pool .ghx-issue .ghx-flags {
-	top: 7px;
-	right: 7px;
-	left: auto;
-}
-#ghx-pool.ghx-band-1 .ghx-issue .ghx-flags {
-	top: 5px;
-	right: 4px;
-}
-#ghx-pool .ghx-issue .ghx-avatar {
-	top: 5px;
-	right: 5px;
-	left: auto;
-}
-#ghx-pool.ghx-band-1 .ghx-issue .ghx-priority,
-#ghx-pool.ghx-band-1 .ghx-issue .ghx-priority img {
-	width: 14px;
-	height: 14px;
-}
-#ghx-pool .ghx-issue .ghx-avatar:not(:empty) ~ .ghx-flags {
-	top: 32px;
-}
-#ghx-pool.ghx-band-1 .ghx-issue .ghx-avatar:not(:empty) ~ .ghx-flags {
-	top: 29px;
-}
-#ghx-pool .ghx-issue .ghx-priority[title='Major'] {
-	display: none;
-}
-#ghx-pool.wide {
-	padding-top: 0 !important;
-}
-#ghx-pool.wide .ghx-columns, #ghx-pool.wide .ghx-zone-overlay-table {
-	width: 150%;
-}
-#ghx-pool.wide .ghx-column-header-group {
-	position: static !important;
-}
-#ghx-column-headers .ghx-column {
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-#ghx-column-headers .ghx-column h2 {
-	display: inline;
+
+	.ghx-issue {
+		.ghx-extra-fields, .ghx-type, .ghx-days {
+			display: none;
+		}
+
+		.ghx-issue-content {
+			padding: 5px 5px 5px 13px;
+		}
+
+		.ghx-flags {
+			top: 7px;
+			right: 7px;
+			left: auto;
+		}
+
+		.ghx-avatar {
+			top: 5px;
+			right: 5px;
+			left: auto;
+
+			&:not(:empty) ~ .ghx-flags {
+				top: 32px;
+			}
+		}
+
+		.ghx-priority[title='Major'] {
+			display: none;
+		}
+	}
+
+	#ghx-column-headers .ghx-column {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+		h2 {
+			display: inline;
+		}
+	}
+
+	// Issue sidebar open
+	&.ghx-band-1 {
+		.ghx-issue {
+			.ghx-issue-fields {
+				padding-right: 25px;
+			}
+
+			.ghx-flags {
+				top: 5px;
+				right: 4px;
+			}
+
+			.ghx-priority, .ghx-priority img {
+				width: 14px;
+				height: 14px;
+			}
+
+			.ghx-avatar:not(:empty) ~ .ghx-flags {
+				top: 29px;
+			}
+		}
+	}
+
+	// Wide mode
+	&.wide {
+		padding-top: 0 !important;
+
+		.ghx-columns, .ghx-zone-overlay-table {
+			width: 150%;
+		}
+
+		.ghx-column-header-group {
+			position: static !important;
+		}
+	}
 }
