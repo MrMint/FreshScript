@@ -2,7 +2,7 @@
 	cursor: default;
 
 	.ghx-issue {
-		.ghx-extra-fields, .ghx-type, .ghx-days {
+		.ghx-type, .ghx-days {
 			display: none;
 		}
 
@@ -76,4 +76,28 @@
 			position: static !important;
 		}
 	}
+}
+
+// Left sidebar toggle
+
+body.hide-left-sidebar {
+	.aui-sidebar {
+		display: none;
+	}
+
+	#gh {
+		padding-left: 0;
+	}
+
+	#ghx-column-header-group {
+		position: absolute !important;
+		top: 0 !important;
+		left: 10px !important;
+	}
+}
+
+// Issue extra fields toggle
+
+body.hide-extra-fields .ghx-issue .ghx-extra-fields {
+	display: none;
 }
