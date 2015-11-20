@@ -1,40 +1,37 @@
 import $ from 'jquery';
 
-let $menu = null;
+let $group;
+let $menu;
 
-export function addMenuItem(text) {
+function init() {
 
-	// Create dropdown if it doesn't exist yet
-	if ($menu == null) {
+	// Create button group with dropdown if it doesn't exist yet
+	if ($group == null) {
 
-		// Create container for dropdown in header
-		let $container = $('<div></div>')
-			.css({ display: 'inline-block', verticalAlign: 'top', paddingLeft: 10 })
+		// Add button group to header
+		$group = $('<div></div>')
+			.addClass('fresh-board-actions')
 			.prependTo('#ghx-modes-tools');
 
 		// Create menu section
 		$menu = $('<ul></ul>')
 			.addClass('aui-list-section aui-first aui-last');
 
-		// Add dropdown menu to container
-		let $dropdown = $('<div></div>').addClass('ajs-layer box-shadow active').append(
+		// Add dropdown menu to group
+		let $dropdown = $('<div></div>').addClass('ajs-layer box-shadow').append(
 			$('<div></div>').addClass('aui-list').append($menu)
-		).appendTo($container).hide();
+		).appendTo($group).hide();
 
-		// Add button to container
-		$('<button>Fresh</button>')
+		// Add button to group, before menu
+		let $dropdownButton = $('<button>Fresh</button>')
 			.addClass('aui-button ghx-dropdown-trigger')
 			.click(function() {
-				$dropdown.css({
-					width: 200,
-					position: 'absolute',
-					left: $(this).position().left + $(this).outerWidth() - 200,
-					top: $(this).position().top + $(this).outerHeight()
-				}).toggle();
+				$dropdown.toggle();
+				$(this).toggleClass('active');
 				$('body').click(); // Close other dropdowns
 				return false;
 			})
-			.appendTo($container);
+			.insertBefore($dropdown);
 
 		// Add active class to menu items on hover
 		$dropdown.on('mouseenter mouseout', 'li', function(e) {
@@ -44,13 +41,22 @@ export function addMenuItem(text) {
 		// Close dropdown on blur
 		$('body').on('click', '*', function() {
 			$dropdown.hide();
+			$dropdownButton.removeClass('active');
 		});
 
 	}
 
-	// Add menu item
+}
+
+export function addMenuItem(text) {
+	init();
 	let $item = $('<li></li>').addClass('aui-list-item').appendTo($menu);
 	return $('<a></a>').addClass('aui-list-item-link')
 		.attr('href', '#').text(text).appendTo($item);
+}
 
+export function addButton(text) {
+	init();
+	return $('<button></button>').addClass('aui-button')
+		.text(text).prependTo($group);
 }

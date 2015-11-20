@@ -1,4 +1,4 @@
-import * as dropdown from '../board-dropdown';
+import { addMenuItem } from '../board-actions';
 import storage from '../storage';
 import $ from 'jquery';
 
@@ -11,7 +11,7 @@ function addToggle(key, className, menuItemText, initialToggleVal = true, callba
 			callback();
 	}
 	// Add menu item to toggle class
-	return dropdown.addMenuItem(menuItemText).click(function() {
+	return addMenuItem(menuItemText).click(function() {
 		// Toggle stored value
 		let val = storage.get(key);
 		val = val == null ? initialToggleVal : !val;

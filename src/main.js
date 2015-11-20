@@ -7,7 +7,7 @@ document.head.appendChild(style);
 
 // Wait for board to exist then load tweaks
 $(function check() {
-	if ($('#ghx-pool').length && $('#ghx-view-pluggable .aui-list').length) {
+	if ($('#ghx-pool').length && $('#ghx-view-pluggable').length) {
 		// webpack magic, requires all modules in directory
 		let r = require.context('./tweaks', true, /.*/);
 		r.keys().forEach(r);

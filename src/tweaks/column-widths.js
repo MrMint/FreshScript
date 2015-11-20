@@ -1,3 +1,4 @@
+import { addButton } from '../board-actions';
 import storage from '../storage';
 import $ from 'jquery';
 
@@ -7,14 +8,9 @@ function setColumnMode(wide) {
 	storage.set('wideColumns', wide);
 }
 
-$('<button></button>')
-	.addClass('aui-button')
-	.text('Toggle Column Width')
-	.css('margin-left', 10)
-	.click(function() {
-		setColumnMode(!$('#ghx-pool').hasClass('wide'));
-	})
-	.prependTo('#ghx-modes-tools');
+addButton('Toggle Column Width').click(function() {
+	setColumnMode(!$('#ghx-pool').hasClass('wide'));
+});
 
 if (storage.get('wideColumns')) {
 	setColumnMode(true);
